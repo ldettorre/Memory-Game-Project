@@ -8,5 +8,46 @@
 
 body {
     height 100vh;
-    background: lightblue; 
+    background:  white; 
 }
+
+img {
+    width: 150px;
+}
+
+/* Below is the board where the cards to appear */
+.game-board {
+    border: 3px solid rgb(255, 81, 0);
+    width: 70vw;
+    height: 70vh;
+    display: flex; 
+    flex-wrap: wrap;
+    /* Flex-wrap is set to wrap here so that the flex item can break into multiples lines. 
+    The flex items width determines how many can fit into a line */
+}
+
+/* Styling for each card item */
+.card {
+    border: 3px solid rgb(60, 255, 0);
+    width: 25%;
+    height: 33.3%;
+    position: relative;
+}
+
+/* Styling for each card on the front and back side */
+.card-front, .card-back{
+    border: 3px solid rgb(183, 0, 255);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 204, 255);
+}
+
+/* Media query to change the sizing for a more pleasant experience on mobile devices */
+@media only screen and (max-width: 600px) {
+    .game-board {
+        width: 90vw;
+        height: 60vh;
+        display: flex; 
+        flex-wrap: wrap;
+  }
