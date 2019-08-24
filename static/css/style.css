@@ -1,0 +1,12 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; 
+    /* The above will help with styling later on ensuring 
+    border and padding is accounted for within the specified values and not added on after */
+}
+
+body {
+    height 100vh;
+    background: lightblue; 
+}
