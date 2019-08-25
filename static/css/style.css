@@ -7,8 +7,9 @@
 }
 
 body {
-    height 100vh;
+    height: 100vh;
     background:  white; 
+    display: flex;
 }
 
 img {
@@ -18,21 +19,27 @@ img {
 /* Below is the board where the cards to appear */
 .game-board {
     border: 3px solid rgb(255, 81, 0);
-    width: 70vw;
+    width: 50vw;
     height: 70vh;
     display: flex; 
     flex-wrap: wrap;
     /* Flex-wrap is set to wrap here so that the flex item can break into multiples lines. 
     The flex items width determines how many can fit into a line */
+    margin: auto; /* Centers the board on the screen */
 }
 
 /* Styling for each card item */
 .card {
-    border: 3px solid rgb(60, 255, 0);
+    border: 3px solid white;
     width: 25%;
     height: 33.3%;
     position: relative;
+    cursor: pointer; /* helps identify to the user that the area can be clicked */
 }
+
+.card:active {
+    transform: scale(.95);
+  }
 
 /* Styling for each card on the front and back side */
 .card-front, .card-back{
@@ -51,3 +58,4 @@ img {
         display: flex; 
         flex-wrap: wrap;
   }
+}
