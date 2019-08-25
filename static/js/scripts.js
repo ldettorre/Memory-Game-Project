@@ -17,20 +17,31 @@ function flipTheCard(){
         flippedCard = false;
         secondCard = this;
         // If they match, we will remove the event listener that would flip them back to default position.
-        if (firstCard.dataset.make === secondCard.dataset.make){
-            firstCard.removeEventListener('click',flipTheCard);
-            secondCard.removeEventListener('click',flipTheCard)
-        } else {
-        // If they don't match we need to remove the flipped class from the card which will then return them to the default position. setTimeout was used to allow the player enough time to view both cards before being flipped over.
-        setTimeout(() => {
-        firstCard.classList.toggle('flipped');
-        secondCard.classList.toggle('flipped');
-        }, 1000);
-        }
         
+        checkIFMatching();
+    }
+}
+function checkIFMatching(){
+    if (firstCard.dataset.make === secondCard.dataset.make){
+        disableCards();
+    } else {
+        resetCards();
     }
 }
 
+//The below function keeps the cards flipped 'face up' as they matched in the previous step.
+function disableCards(){
+    firstCard.removeEventListener('click',flipTheCard);
+    secondCard.removeEventListener('click',flipTheCard);
+}
+
+//Should the cards not match, they will return to the default position.
+function resetCards(){
+    setTimeout(() => {
+        firstCard.classList.toggle('flipped');
+        secondCard.classList.toggle('flipped');
+        }, 1000);
+}
 // An event listener has been added to each card (click) and it executes a function when performed (flipTheCard)
 cards.forEach(card => card.addEventListener('click', flipTheCard));
 
