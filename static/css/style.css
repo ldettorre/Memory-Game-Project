@@ -26,6 +26,7 @@ img {
     /* Flex-wrap is set to wrap here so that the flex item can break into multiples lines. 
     The flex items width determines how many can fit into a line */
     margin: auto; /* Centers the board on the screen */
+    perspective: 500px; /* perspective was set to 500px as this allows  enough 3d space for the cards to flip without much if any weird distortion */
 }
 
 /* Styling for each card item */
@@ -35,27 +36,37 @@ img {
     height: 33.3%;
     position: relative;
     cursor: pointer; /* helps identify to the user that the area can be clicked */
+    transform-style: preserve-3d;
+    transition: transform .5s;
 }
 
-.card:active {
-    transform: scale(.95);
-  }
-
-/* Styling for each card on the front and back side */
-.card-front, .card-back{
+/* Styling for each card on the front and back side. Backface visibility is set to hidden so that we don't see the mirrored image when flipped and with additional styling will see the intended logo */
+.card-front, .card-back {
     border: 3px solid rgb(183, 0, 255);
     position: absolute;
     width: 100%;
     height: 100%;
     background: rgb(0, 204, 255);
+    backface-visibility: hidden; 
+    
 }
 
-/* Media query to change the sizing for a more pleasant experience on mobile devices */
+.card-front {
+    transform: rotateY(180deg); /*This lets us see the inteded logo after setting backface visibility to hidden */
+}
+
+/* Media query to change the sizing of the Game Board for a more pleasant experience on mobile devices */
 @media only screen and (max-width: 600px) {
     .game-board {
         width: 90vw;
-        height: 60vh;
+        height: 50vh;
         display: flex; 
         flex-wrap: wrap;
   }
+}
+
+/* When a card is clicked, the below class is added and as a result is then flipped */
+.flipped {
+    transform: rotateY(180deg);
+    
 }
