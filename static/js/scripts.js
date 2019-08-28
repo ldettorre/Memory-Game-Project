@@ -24,9 +24,14 @@ function flipTheCard(){
         checkIFMatching();
     }
 }
+
+var carRevvingAudio = new Audio('static/audio/carRevvingAudio.m4a');
+
+//If the cards match they will remain flipped up and the audio clip will play.
 function checkIFMatching(){
     if (firstCard.dataset.make === secondCard.dataset.make){
         disableCards();
+        carRevvingAudio.play();
     } else {
         resetCards();
     }
