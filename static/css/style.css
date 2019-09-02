@@ -68,5 +68,16 @@ img {
 /* When a card is clicked, the below class is added and as a result is then flipped */
 .flipped {
     transform: rotateY(180deg);
-    
+}
+
+
+.card-vanish {
+    animation-name: vanish;
+    animation-duration: 1s;
+    animation-fill-mode: forwards; 
+}
+
+@keyframes vanish {
+        from {opacity: .9}
+        to {opacity: .0;}
 }

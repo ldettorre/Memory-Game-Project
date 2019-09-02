@@ -27,6 +27,7 @@ function flipTheCard(){
 
 var carRevvingAudio = new Audio('static/audio/carRevvingAudio.m4a');
 
+
 //If the cards match they will remain flipped up and the audio clip will play.
 function checkIFMatching(){
     if (firstCard.dataset.make === secondCard.dataset.make){
@@ -41,7 +42,10 @@ function checkIFMatching(){
 function disableCards(){
     firstCard.removeEventListener('click',flipTheCard);
     secondCard.removeEventListener('click',flipTheCard);
+    setTimeout(() => {
+    removeCards();
     boardReset();
+    }, 1000);
 }
 
 //Should the cards not match, they will return to the default position.
@@ -57,6 +61,11 @@ function resetCards(){
 function boardReset(){
     [flippedCard,boardLocked] = [false,false];
     [firstCard,secondCard] = [null,null];
+}
+
+function removeCards(){
+    firstCard.classList.add('card-vanish');
+    secondCard.classList.add('card-vanish');
 }
 
 // Below generates a random number and assigns it to each card. We use math.random to generate the random number and math.floor to create an integer.
